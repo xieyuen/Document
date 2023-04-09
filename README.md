@@ -1,6 +1,6 @@
 # Document
 
-[简体中文](</README_cn.md>)|**English**
+**English** | [简体中文](</README_cn.md>)
 
 My Documents. And, it is public.
 

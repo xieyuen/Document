@@ -1,6 +1,6 @@
 # 文档库
 
-**简体中文**|[English](</README.md>)
+[English](</README.md>) | **简体中文**
 
 我的一些可以公开的文档和稿子
 
