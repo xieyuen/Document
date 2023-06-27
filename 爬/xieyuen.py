@@ -155,12 +155,12 @@ class Crawler:
             self._picture = _picture
 
         def main_program(_url: str, _root: str):
-            _path = root + url.split('/')[-1]
+            _path = _root + _url.split('/')[-1]
             try:
                 if not os.path.exists(_root):
-                    os.mkdir(root)
+                    os.mkdir(_root)
                 if not os.path.exists(_path):
-                    _req = requests.get(url)
+                    _req = requests.get(_url)
                     with open(path, 'wb')as f:
                         f.write(_req.content)
                         f.close()
