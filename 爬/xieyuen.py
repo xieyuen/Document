@@ -86,7 +86,7 @@ class Crawler:
                 
                 # 无法识别
                 case _:
-                    print(f"【ERROR】\n无法识别到你输入的 { platfrom } 平台，请重新输入.")
+                    print(f"【ERROR】\n无法识别到你输入的 '{ platfrom }' 平台，请重新输入.")
                     print("-------------------------------------------------------")
                     Crawler.Music.get_music_platfrom()
 
