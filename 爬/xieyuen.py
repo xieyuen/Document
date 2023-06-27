@@ -7,7 +7,8 @@ import os
 
 class Crawler: 
     '''
-    一堆爬虫
+    爬虫类
+    使用时要记得调用 main_program
 
     现有:
     1. Music
