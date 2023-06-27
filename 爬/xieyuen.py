@@ -11,10 +11,10 @@ class Crawler:
     使用时要记得调用 main_program
 
     现有:
-    1. Music
-        - 音乐爬虫，支持网易云、QQ等平台
-    2. Picture
-        - 也许是最简单的图片爬虫了
+        1. Music
+            - 音乐爬虫，支持网易云、QQ等平台
+        2. Picture
+            - 也许是最简单的图片爬虫了
     '''
 
     def __init__(self, _any):
