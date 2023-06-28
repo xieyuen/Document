@@ -6,15 +6,16 @@ import jsonpath
 import os
 
 class Crawler: 
-    '''
-    爬虫类
-    使用时要记得调用 main_program
 
-    现有:
-        1. Music
-            - 音乐爬虫，支持网易云、QQ等平台
-        2. Picture
-            - 也许是最简单的图片爬虫了
+    '''
+        一堆爬虫
+        使用爬虫要记得调用 main_program
+
+        现有:
+            1. Music
+                - 音乐爬虫，支持网易云、QQ等平台
+            2. Picture
+                - 也许是最简单的图片爬虫了
     '''
 
     def __init__(self, _any):
@@ -25,23 +26,24 @@ class Crawler:
     class Music:
 
         """
-        音乐爬虫awa
-        
-        支持：
-            1.网易云:netease
-            2.QQ:qq
-            3.酷狗:kugou
-            4.酷我:kuwo
-            5.百度:baidu
-            6.喜马拉雅:ximalaya
+            音乐爬虫awa
+            使用爬虫请调用`Crawler.Music.main_program()`这个函数awa
+            
+            支持：
+                1.网易云:netease
+                2.QQ:qq
+                3.酷狗:kugou
+                4.酷我:kuwo
+                5.百度:baidu
+                6.喜马拉雅:ximalaya
         """
 
         """
-        编程思路：
-            1.url
-            2.模拟浏览器请求
-            3.解析网页源代码
-            4.保存数据
+            编程思路：
+                1.url
+                2.模拟浏览器请求
+                3.解析网页源代码
+                4.保存数据
         """
 
         def __init__(self, _music):
@@ -54,46 +56,56 @@ class Crawler:
             return _inverted
 
         def invert_platfrom(platfrom):
+
             """
-            检测并转换平台参数
+                检测并转换平台参数(大小写均可识别)
             """
             
+            platfrom = str.lower(platfrom) # 将所有的大写字母转化为小写 
+
             match platfrom:
                 
                 # 网易云 netease
-                case 'n'|'net'|'wy'|'wyy'|'wangyi'|'wangyiyun'|'netease':
+                case '1'|'n'|'net'|'wy'|'wyy'|'wangyi'|'wangyiyun'|'netease'|'网易'|'网易云'|'网易云音乐':
                     return 'netease'
                 
                 # QQ qq
-                case 'q'|'qq':
+                case '2'|'q'|'qq'|'qqmusic'|'qqyinyue'|'qq音乐'|'qq 音乐':
                     return 'qq'
                 
                 # 酷狗 kugou
-                case 'kg'|'kugou':
+                case '3'|'kg'|'ku'|'kou'|'gou'|'kugou'|'酷狗':
                     return 'kugou'
                 
                 # 酷我 kuwo
-                case 'kw'|'kuwo':
+                case '4'|'kw'|'ko'|'wo'|'kuwo'|'酷我':
                     return 'kuwo'
                 
                 # 百度 baidu
-                case 'bd'|'baidu':
+                case '5'|'b'|'bd'|'bu'|'baidu'|'百度':
                     return 'baidu'
                 
                 # 喜马拉雅 ximalaya
-                case 'x'|'xi'|'xmly'|'xmla'|'ximalaya':
+                case '6'|'x'|'xi'|'xmly'|'xmla'|'ximalaya'|'喜马拉雅':
                     return 'ximalaya'
                 
                 # 无法识别
                 case _:
-                    print(f"【ERROR】\n无法识别到你输入的 '{ platfrom }' 平台，请重新输入.")
+
+                    print(f"【ERROR】\n无法识别到你输入的 '{ platfrom }' 平台")
+                    __check = int(input('请选择操作：\n[1]重新输入参数\n[2]使用默认值'))
                     print("-------------------------------------------------------")
-                    Crawler.Music.get_music_platfrom()
+                    if __check == 1:
+                        Crawler.Music.get_music_platfrom()
+                    if __check == 2:
+                        return 'netease'
+
 
         def download_music(url, title, author):
 
             # 创建文件夹(如果不存在的话)
-            if not os.path.exists('.\\music\\'): os.makedirs("music",exist_ok=True)
+            if not os.path.exists('.\\music\\'):
+                os.makedirs("music",exist_ok=True)
 
             path = '.\\music\\{}.mp3'.format(title)
 
@@ -108,10 +120,16 @@ class Crawler:
             return True
 
         def main_program():
+
+            '''
+                音乐爬虫主程序
+            '''
+
             """
-            搜索歌曲名称
-            :return:
+                搜索歌曲名称
+                :return:
             """
+
             name = input("请输入歌曲名称:")
             platfrom = Crawler.Music.get_music_platfrom() # 获取搜索的平台
             print("-------------------------------------------------------")
@@ -148,17 +166,26 @@ class Crawler:
     class Picture:
 
         """
-        图片爬虫awa
+            图片爬虫awa
+            使用爬虫请调用`Crawler.Picture.main_program()`这个函数awa
         """
 
         def __init__(self, _picture):
             self._picture = _picture
 
         def main_program(_url: str, _root: str):
+
+            '''
+                图片爬虫主程序
+            '''
+
             _path = _root + _url.split('/')[-1]
+
             try:
+                # 创建文件夹（如果 { _root } 不存在的话）
                 if not os.path.exists(_root):
                     os.mkdir(_root)
+
                 if not os.path.exists(_path):
                     _req = requests.get(_url)
                     with open(path, 'wb')as f:
@@ -172,3 +199,105 @@ class Crawler:
             except:
                 print('爬取失败')
                 return False
+
+class Tools:
+
+    """
+        尝试写的小工具
+    """
+
+    def __init__(self, _any): # 初始化，没得说
+        self.any = _any
+        self.sys_cmd = self.Sys_cmd()
+        # self.picture = self.Picture()
+
+    def is_exist_chinese(string):
+
+        '''
+            检测字符串内是否存在汉字
+        '''
+
+        for char in string:
+            if u'\u4e00' <= char <= u'\u9fa5':  # 判断是否是汉字
+                return True
+            continue
+        return False
+
+    def chinese_count(string):
+        
+        '''
+            计算汉字数量并记录汉字位置
+            返回值像这样：
+
+            [
+                {
+                    "汉字数量": 11,
+                    "字母数量": 45,
+                    "非字母汉字数量": 14
+                },
+                [
+                    1, 9, 19, 81 ...
+                ]
+            ]
+        '''
+
+        result_1 = {
+            "汉字数量": 0,
+            "字母数量": 0,
+            "非字母汉字数量": 0
+        }    #[["汉字数量", "字母数量", "非字母汉字数量"], [0, 0, 0]]
+        result_2 = []
+        i = 0
+
+        for char in string:
+            if u'\u4e00' <= char <= u'\u9fa5':  # 判断是否是汉字，在isalpha()方法之前判断
+                result_1["汉字数量"] += 1
+                result_2.append(i)
+            elif char.isalpha():  # ！汉字也返回true
+                result_1["字母数量"] += 1
+            else:
+                result_1["非字母汉字数量"] += 1
+            i += 1
+        result=[result_1, result_2]
+        return result
+
+    def list_sort(_list):
+
+        '''
+            给列表不打乱顺序地排序
+        '''
+        _result = []
+        for i in _list:
+            if i not in _result:
+                _result.append(i)
+        return _result
+
+    class Sys_cmd:
+
+        def __init__(self, _any):
+            self.any = _any
+    
+        def cmd(command):
+
+            '''
+                执行系统（cmd）命令
+            '''
+
+            os.system(command)
+        
+        def mkdir(_file_name):
+
+            '''
+                创建文件夹
+            '''
+
+            # os.makedirs(f'.\\{ _file_name }\\')
+            Tools.Sys_cmd.cmd(f'mkdir ".\\{ _file_name }\\"')
+
+        def md(_file_name):
+
+            """
+                mkdir 的别名
+            """
+
+            Tools.Sys_cmd.mkdir(_file_name)
