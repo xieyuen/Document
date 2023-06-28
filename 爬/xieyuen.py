@@ -46,14 +46,17 @@ class Crawler:
                 4.保存数据
         """
 
+
         def __init__(self, _music): # 初始化，没得说
             self._music = _music
+
 
         def get_music_platfrom():
             print("1.网易云:netease\n2.QQ:qq\n3.酷狗:kugou\n4.酷我:kuwo\n5.百度:baidu\n6.喜马拉雅:ximalaya")
             _platfrom = input("输入音乐平台类型:")
             _inverted = Crawler.Music.invert_platfrom(_platfrom)
             return _inverted
+
 
         def invert_platfrom(platfrom):
 
@@ -119,6 +122,7 @@ class Crawler:
             print('下载完毕,{0}-{1},请试听'.format(title,author))
             return True
 
+
         def main_program():
 
             '''
@@ -170,8 +174,10 @@ class Crawler:
             使用爬虫请调用`Crawler.Picture.main_program()`这个函数awa
         """
 
+
         def __init__(self, _picture): # 初始化，没得说
             self._picture = _picture
+
 
         def main_program(_url: str, _root: str):
 
@@ -206,10 +212,12 @@ class Tools:
         尝试写的小工具
     """
 
+
     def __init__(self, _any): # 初始化，没得说
         self.any = _any
         self.sys_cmd = self.Sys_cmd()
         # self.picture = self.Picture()
+
 
     def is_exist_chinese(string):
 
@@ -222,6 +230,7 @@ class Tools:
                 return True
             continue
         return False
+
 
     def chinese_count(string):
         
@@ -253,13 +262,14 @@ class Tools:
             if u'\u4e00' <= char <= u'\u9fa5':  # 判断是否是汉字，在isalpha()方法之前判断
                 result_1["汉字数量"] += 1
                 result_2.append(i)
-            elif char.isalpha():  # ！汉字也返回true
+            elif char.isalpha():  # ！汉字也返回 true
                 result_1["字母数量"] += 1
             else:
                 result_1["非字母汉字数量"] += 1
             i += 1
         result=[result_1, result_2]
         return result
+
 
     def list_sort(_list):
 
@@ -274,9 +284,16 @@ class Tools:
 
     class Sys_cmd:
 
+        '''
+            系统命令包
+            仅限 Windows
+        '''
+
+
         def __init__(self, _any): # 初始化，没得说
             self.any = _any
-    
+
+
         def cmd(command):
 
             '''
@@ -284,7 +301,8 @@ class Tools:
             '''
 
             os.system(command)
-        
+
+
         def mkdir(_file_name):
 
             '''
@@ -293,6 +311,7 @@ class Tools:
 
             # os.makedirs(f'.\\{ _file_name }\\')
             Tools.Sys_cmd.cmd(f'mkdir ".\\{ _file_name }\\"')
+
 
         def md(_file_name):
 
