@@ -18,7 +18,7 @@ class Crawler:
                 - 也许是最简单的图片爬虫了
     '''
 
-    def __init__(self, _any):
+    def __init__(self, _any): # 初始化，没得说
         self.any = _any
         self.music = self.Music()
         self.picture = self.Picture()
@@ -46,7 +46,7 @@ class Crawler:
                 4.保存数据
         """
 
-        def __init__(self, _music):
+        def __init__(self, _music): # 初始化，没得说
             self._music = _music
 
         def get_music_platfrom():
@@ -170,7 +170,7 @@ class Crawler:
             使用爬虫请调用`Crawler.Picture.main_program()`这个函数awa
         """
 
-        def __init__(self, _picture):
+        def __init__(self, _picture): # 初始化，没得说
             self._picture = _picture
 
         def main_program(_url: str, _root: str):
@@ -274,7 +274,7 @@ class Tools:
 
     class Sys_cmd:
 
-        def __init__(self, _any):
+        def __init__(self, _any): # 初始化，没得说
             self.any = _any
     
         def cmd(command):
