@@ -426,8 +426,22 @@ class Tools:
 
         '''
             计算字符数量并记录字符位置
-            返回值像这样：
 
+            返回值说明：
+            >>>
+            'count': 数量
+            'index': 索引
+            'chinese': 汉字
+            'alpha': 字母
+                'all': 全部字母
+                'lowercase': 小写字母
+                'uppercase': 大写字母
+            ' ': 空格 space
+            '_': 其他(相当于通配符)
+            
+            后面的列表是汉字所在字符串的索引
+
+            返回值像这样：
             >>> count('加油华为 加油China')
             {
                 'count': {
@@ -439,32 +453,41 @@ class Tools:
                         '_': 0
                     },
                     ' ': 1,
-                    '_': 0},
+                    '_': 0
+                },
                 'index': {
                     'chinese': [0, 1, 2, 3, 5, 6],
-                    'alpha':像长{
+                    'alpha': {
                         'all': [7, 8, 9, 10, 11],
                         'lowercase': [8, 9, 10, 11],
-                        'uppercase': [7],
-                        '_': []
+                        'uppercase': [7]
                     },
-                    ' ': [4],
-                    '_': []
+                    ' ': [4]
                 }
             }
-
-            后面的列表是汉字所在字符串的索引
-            返回值说明：
-            'count': 数量
-            'index': 索引
-            'chinese': 汉字
-            'alpha': 字母
-                'all': 全部字母
-                'lowercase': 小写字母
-                'uppercase': 大写字母
-            ' ': 空格 spaxce
-            '_': 其他(通配符)
-
+            >>> count('加油华为，加油China')
+            {
+                'count': {
+                    'chinese': 6,
+                    'alpha': {
+                        'all': 5, 
+                        'lowercase': 4, 
+                        'uppercase': 1, 
+                        '_': 0
+                    },
+                    ' ': 0,
+                    '_': 1
+                },
+                'index': {
+                    'chinese': [0, 1, 2, 3, 5, 6],
+                    'alpha': {
+                        'all': [7, 8, 9, 10, 11],
+                        'lowercase': [8, 9, 10, 11],
+                        'uppercase': [7]
+                    },
+                    '_': [4]
+                }
+            }
         '''
 
         __result = {
@@ -492,6 +515,7 @@ class Tools:
             }
         }
 
+        # 开始处理并计数
         for __index in range(len(string)):
             char = string[__index]
 
