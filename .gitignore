@@ -1,3 +1,6 @@
 # Git ignore File
 朗诵/~$朗诵文稿.docx
 *__pycache__
+*/music
+*.jar
+*/img
