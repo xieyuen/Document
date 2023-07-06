@@ -469,6 +469,8 @@ class Tools:
             }
         }
 
+        print(f'检测的字符串："{ string }"')
+
         # 开始处理并计数
         for __index in range(len(string)):
             char = string[__index]
