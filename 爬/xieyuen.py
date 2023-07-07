@@ -688,6 +688,8 @@ class Tools:
         '''
             系统命令包
             仅限 Windows
+            建议直接这样导入：
+            `from xieyuen.Tools import SysCmd as cmd`
         '''
 
 
@@ -721,6 +723,20 @@ class Tools:
             """
 
             Tools.SysCmd.mkdir(_file_name)
+
+
+        def cd(workpath = None):
+            if workpath != None: os.chdir(workpath)
+            print(os.getcwd)
+
+
+        def del_file(path):
+            os.remove(path)
+
+
+        def rd(path):
+            os.rmdir(path)
+
 
 class Script:
 
@@ -991,4 +1007,4 @@ class Script:
                         thread2.join()
 
                     print("Exiting Main Thread")
-                    print("所有的必修都学完了，可以考试了")
+                    print("请检查所有的必修是否都学完再考试")
