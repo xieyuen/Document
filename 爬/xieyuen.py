@@ -727,7 +727,7 @@ class Tools:
 
         def cd(workpath = None):
             if workpath != None: os.chdir(workpath)
-            print(os.getcwd)
+            print(os.getcwd())
 
 
         def del_file(path):
