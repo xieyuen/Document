@@ -13,7 +13,30 @@ import win32con
 import math
 import threading
 
-print('[xieyuen.py] Please call `Information.copyright_info()` to view copyright information.')
+def __init__(self):
+    if __name__ == "__main__":
+        __main()
+    else:
+        print('[xieyuen.py] Please call `Information.copyright_info()` to view copyright information.')
+
+
+def __main():
+    while True:
+        __input = input(">>>")
+        __count = Tools.count(__input)
+        if __count['count'][' '] > 0: 
+            __had_space = True
+            __1 = __count['index'][' '][0]
+        else:
+            __had_space = False
+            
+            match __input:
+                case 'help':
+                    Help.list()
+                    ...
+                
+                case _:
+                    ...
 
 
 class Information:
@@ -49,6 +72,7 @@ class Information:
         Information.author()
         print('LICENSE：\n')
         Information.LICENSE()
+
 
 class Help:
 
@@ -133,6 +157,7 @@ class Help:
         def chinese_count():
             _help_massage = '计算汉字数量并记录汉字位置\n返回值像这样：\n\n[{"汉字数量": 11,"字母数量": 45,"非字母汉字数量": 14},[1, 9, 19, 81 ...]]\n后面的列表是汉字所在字符串的索引'
             Help.printHelpMassage(_help_massage)
+
 
 class Crawler:
 
@@ -344,6 +369,7 @@ class Crawler:
             except:
                 print('爬取失败')
                 return False
+
 
 class Tools:
 
